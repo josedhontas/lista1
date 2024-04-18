@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes da Jéssica</title>
+</head>
+
+<body>
+    <script>
+        var clientes = [
+            { cidade: "Belo Horizonte", quantidade: 23, faturamento: 2950 },
+            { cidade: "São Paulo", quantidade: 12, faturamento: 3950 },
+            { cidade: "Salvador", quantidade: 11, faturamento: 1329 },
+            { cidade: "Campo Grande", quantidade: 10, faturamento: 2412 },
+            { cidade: "Curitiba", quantidade: 8, faturamento: 626 }
+        ];
+
+        var totalClientes = clientes.reduce(function (total, cidade) {
+            return total + cidade.quantidade;
+        }, 0);
+
+        var mensagem = "Nas capitais de BH, SP, BA, MS e PR, Jéssica possui " + totalClientes + " clientes.";
+
+        document.write("<p>" + mensagem + "</p>");
+
+
+        var faturamentoMedioPorCliente = clientes.map(function (cidade) {
+            var faturamentoMedio = Math.round(cidade.faturamento / cidade.quantidade);
+            return cidade.cidade + ": R$ " + faturamentoMedio;
+        });
+
+        document.write("<p>Faturamento médio por cliente:</p>");
+        faturamentoMedioPorCliente.forEach(function (resultado) {
+            document.write("<p>" + resultado + "</p>");
+        });
+    </script>
+</body>
+
+</html>
